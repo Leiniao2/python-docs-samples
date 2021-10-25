@@ -1,34 +1,120 @@
-<!doctype html>
-<!--
- Copyright 2021 Google LLC
+<!DOCTYPE html>
+<html lang="en">
 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
--->
-
-<html>
 <head>
-  <title>Datastore and Firebase Auth Example</title>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
-  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classic Snake Game</title>
 </head>
+
 <body>
-
-  <h1>Datastore and Firebase Auth Example</h1>
-
-  <h2>Last 10 visits</h2>
-  {% for time in times %}
-    <p>{{ time }}</p>
-  {% endfor %}
-
+    <div class="keypress hide">
+        <div class="up" onclick="emit(38)">&#8593;</div>
+        <div class="right" onclick="emit(39)">&#8594;</div>
+        <div class="left" onclick="emit(37)">&#8592;</div>
+        <div class="down" onclick="emit(40)">&#8595;</div>
+    </div>
+    <div class="banner" id="selector">
+        <div>
+            Time :<span id="time">0</span>
+        </div>
+        <div>Game Made By Xiaoyu</div>
+        <div>
+            Score :<span id="score">0</span>
+        </div>
+        User Name: <input type="text" id="username" value="User1">
+        <button onclick="getRank()">My Rank?</button>
+        <button onclick="getInstruction()">Instruction</button>        
+    </div>
+    <canvas id="main"></canvas>
+    <script type = "text/javascript" src = "snakegame.js"></script>
 </body>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: #000
+    }
+
+    .banner {
+        text-align: center;
+        color: #fff;
+        background: #3f51b5;
+        line-height: 29px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        font-family: monospace;
+        height: 30px;
+        opacity: .4;
+        display: flex;
+        transition: .5s
+    }
+
+    .banner:hover {
+        opacity: 1
+    }
+
+    div#selector>div {
+        flex-basis: 30%
+    }
+
+    @keyframes diss {
+        from {
+            opacity: 1
+        }
+
+        to {
+            opacity: 0
+        }
+    }
+
+    .keypress>div {
+        border: dashed 3px #fff;
+        height: 48%;
+        width: 48%;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-self: center;
+        align-items: center;
+        font-size: -webkit-xxx-large;
+        font-weight: 900;
+        color: #fff;
+        transition: .5s;
+        opacity: .1;
+        border-radius: 7px
+    }
+
+    .keypress {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        opacity: 1;
+        user-select: none
+    }
+
+    .keypress>div:hover {
+        opacity: 1
+    }
+
+    .touch {
+        background: #8bc34a
+    }
+
+    .off {
+        background: #f44336
+    }
+
+    .hide {
+        opacity: 0
+    }
+</style>
 </html>
