@@ -32,6 +32,10 @@ def root():
 
     return render_template('index.html', times=dummy_times)
 
+@app.route('/instruction')
+def getInstruction():
+    instruction_text = "Snake game will count the food the snake eats as your final score."
+    return render_template('instruction.html', instruction=instruction_text)
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
