@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title>Rank of current snake game result</title>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <h1>YOUR RANK IS HERE:</h1>
+
+  <h2>Your rank is {{ user_rank }}</h2>
+  
+  <h2>Leaderboard:</h2>
+  {% i = 0 %}
+  {% for score in database_scores[:10] %}
+      <b> rank {{ i }} - score: {{ score }} </b>
+      {% i++ %}
+  {% endfor %}
+</body>
+</html>
