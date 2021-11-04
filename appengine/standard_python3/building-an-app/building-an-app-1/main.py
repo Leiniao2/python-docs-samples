@@ -40,7 +40,7 @@ def getInstruction():
 
 @app.route('/rank')
 def getRank():
-    score = request.args.get('score')
+    score = int(request.args.get('score'))
     rank = -1
     for i, num in enumerate(database_scores):
         if score > num:
