@@ -13,8 +13,8 @@
   {% set i = 0 %}
   {% for score in all_scores[:10] %}
       <br>
+      {% set i = i + 1 %}
       <b> rank {{ i }} - score: {{ score }} </b>
-      {% set i = i+1 %}
   {% endfor %}
 </body>
 </html>
