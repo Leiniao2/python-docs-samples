@@ -10,11 +10,11 @@
   <h2>Your rank is {{ user_rank }}</h2>
   
   <h2>Leaderboard:</h2>
-  {% set i = 0 %}
+  {% set i = namespace(value=0) %}
   {% for score in all_scores[:10] %}
       <br>
-      {% set i = i + 1 %}
-      <b> rank {{ i }} - score: {{ score }} </b>
+      {% set i.value = i.value + 1 %}
+      <b> rank {{ i.value }} - score: {{ score }} </b>
   {% endfor %}
 </body>
 </html>
