@@ -32,9 +32,8 @@ function getInstruction() {
 }
 
 function getRank() {
-  let username = document.getElementById("username").value
   let score = document.getElementById("score").innerHTML
-  location.replace("/rank/" + username + "/" + score)
+  location.replace("/rank/?score=" + score)
 }
 
 function coll(t, e) {
