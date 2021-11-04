@@ -10,7 +10,7 @@
   <h2>Your rank is {{ user_rank }}</h2>
   
   <h2>Leaderboard:</h2>
-  {% int i = 0 %}
+  {% set i = 0 %}
   {% for score in database_scores[:10] %}
       <b> rank {{ i }} - score: {{ score }} </b>
       {% i++ %}
