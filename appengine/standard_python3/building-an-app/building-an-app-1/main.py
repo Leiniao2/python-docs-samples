@@ -16,10 +16,11 @@
 # [START gae_python3_render_template]
 import datetime
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+database_scores = [2660, 1230, 1003, 980, 633, 622, 567, 433, 312, 302]
 
 @app.route('/')
 def root():
@@ -36,6 +37,21 @@ def root():
 def getInstruction():
     instruction_text = "Snake game will count the food the snake eats as your final score."
     return render_template('instruction.html', instruction=instruction_text)
+
+@app.route('/rank')
+def getRank():
+    score = request.args.get('score')
+    rank = -1
+    for i, num in enumerate(database_scores):
+        if score > num:
+            rank = i + 1
+            database_scores.insert(i, score) 
+            break 
+            
+    if rank < 0:
+        database_scores.append(score)
+        rank = len(database_scores)
+    return render_template('rank.html', user_rank=rank, all_scores=database_scores)
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
